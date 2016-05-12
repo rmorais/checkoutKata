@@ -1,0 +1,2 @@
+# checkoutKata
+Checkout code Kata
