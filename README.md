@@ -18,7 +18,7 @@ To run the test in the console, just type:
 ```
 sbt test
 ```
-If you want run an interactive session, just type"
+If you want run an interactive session, just type:
 
 ```
 sbt run
