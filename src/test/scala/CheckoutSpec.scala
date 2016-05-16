@@ -2,16 +2,22 @@ import org.specs2.mutable.Specification
 
 class CheckoutSpec extends Specification {
 
+  val itemA = Item('A')
+  val itemB = Item('B')
+  val itemC = Item('C')
+  val itemD = Item('D')
+
   val rules = Seq(
-    PricingRule('A', 50, (3, 130)),
-    PricingRule('B', 30, (2, 45)),
-    PricingRule('C', 20),
-    PricingRule('D', 15)
+    PricingRule(itemA, 50, (3, 130)),
+    PricingRule(itemB, 30, (2, 45)),
+    PricingRule(itemC, 20),
+    PricingRule(itemD, 15)
   )
 
   def scanAndTotal(items: String) = {
     val checkout = new Checkout(rules)
-    checkout.calculateTotal(items.toList)
+    val itemsList = items.toList map Item
+    checkout.calculateTotal(itemsList)
   }
 
   "Checkout" should {
