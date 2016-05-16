@@ -11,8 +11,7 @@ object CheckoutRunner {
 
     def scanAndTotal(items: String) = {
       val checkout = new Checkout(rules)
-      items foreach checkout.scan
-      checkout.total()
+      checkout.calculateTotal(items.toList)
     }
 
     println(s"Write the sequence of items you want to buy. do CTRL+C to end session")
@@ -23,11 +22,7 @@ object CheckoutRunner {
 
 class Checkout(pricingRules: Seq[PricingRule]) {
 
-  private var items: List[Char] = List.empty
-
-  def scan(item: Char): Unit = items = item.toUpper +: items
-
-  def total(): Double = {
+  def calculateTotal(items: List[Char]): Double = {
     pricingRules.foldLeft(0d) { (z, r) =>
       z + r.calculatePrice(items)
     }

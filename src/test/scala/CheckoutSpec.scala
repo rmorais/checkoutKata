@@ -11,8 +11,7 @@ class CheckoutSpec extends Specification {
 
   def scanAndTotal(items: String) = {
     val checkout = new Checkout(rules)
-    items foreach checkout.scan
-    checkout.total()
+    checkout.calculateTotal(items.toList)
   }
 
   "Checkout" should {
