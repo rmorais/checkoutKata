@@ -1,7 +1,7 @@
 
-case class PricingRule(item: String, price: Double, promotion: (Int, Double)) {
+case class PricingRule(item: Char, price: Double, promotion: (Int, Double)) {
 
-  def calculatePrice(items: List[String]): Double = {
+  def calculatePrice(items: List[Char]): Double = {
 
     val (itemsInPromotion, promotionalPrice) = promotion
 
@@ -14,5 +14,5 @@ case class PricingRule(item: String, price: Double, promotion: (Int, Double)) {
 }
 
 object PricingRule {
-  def apply(item: String, price: Double): PricingRule = new PricingRule(item, price, (1, price))
+  def apply(item: Char, price: Double): PricingRule = new PricingRule(item, price, (1, price))
 }

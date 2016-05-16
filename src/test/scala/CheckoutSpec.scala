@@ -3,15 +3,15 @@ import org.specs2.mutable.Specification
 class CheckoutSpec extends Specification {
 
   val rules = Seq(
-    PricingRule("A", 50, (3, 130)),
-    PricingRule("B", 30, (2, 45)),
-    PricingRule("C", 20),
-    PricingRule("D", 15)
+    PricingRule('A', 50, (3, 130)),
+    PricingRule('B', 30, (2, 45)),
+    PricingRule('C', 20),
+    PricingRule('D', 15)
   )
 
   def scanAndTotal(items: String) = {
     val checkout = new Checkout(rules)
-    items.foreach(i => checkout.scan(i.toString))
+    items foreach checkout.scan
     checkout.total()
   }
 
