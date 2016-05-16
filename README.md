@@ -15,5 +15,11 @@ Our checkout accepts items in any order, so that if we scan a B, an A, and anoth
 
 
 To run the test in the console, just type:
+```
+sbt test
+```
+If you want run an interactive session, just type"
 
+```
 sbt run
+```
