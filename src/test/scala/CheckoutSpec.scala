@@ -27,7 +27,6 @@ class CheckoutSpec extends Specification {
       checkout.total() === 100
     }
 
-
     "calculate the total given multiple products are scanned a single time" in {
       val rules = Seq(
         PricingRule("A", 50),
@@ -43,6 +42,20 @@ class CheckoutSpec extends Specification {
       checkout.total() === 115
     }
 
+    "calculate the total given a single product as special price" in {
+      val rules = Seq(
+        PricingRule("A", 50, (3, 130)),
+        PricingRule("B", 30, (2, 45)),
+        PricingRule("C", 20),
+        PricingRule("D", 15)
+      )
+      val checkout = new Checkout(rules)
+      checkout.scan("A")
+      checkout.scan("A")
+      checkout.scan("A")
+      checkout.scan("A")
+      checkout.total() === 180
+    }
   }
 }
 
