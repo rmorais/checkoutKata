@@ -6,7 +6,7 @@ case class PricingRule(item: String, price: Double, promotion: (Int, Double)) {
     val (itemsInPromotion, promotionalPrice) = promotion
 
     val numberOfItems = items.count(_ == item)
-    val promotionalPacks = numberOfItems % itemsInPromotion
+    val promotionalPacks = numberOfItems / itemsInPromotion
     val promotionalPackPrice = promotionalPacks * promotionalPrice
     val regularItems = numberOfItems - promotionalPacks * itemsInPromotion
     regularItems * price + promotionalPackPrice
