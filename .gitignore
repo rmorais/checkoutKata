@@ -1,6 +1,10 @@
 *.class
 *.log
 
+.idea
+activator*
+LICENSE
+
 # sbt specific
 .cache
 .history
