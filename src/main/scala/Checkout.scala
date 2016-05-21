@@ -23,9 +23,12 @@ object CheckoutRunner {
 
 class Checkout(pricingRules: Seq[PricingRule]) {
 
-  private var items: List[Char] = List.empty
+  private var items: Map[Char, Int] = Map.empty
 
-  def scan(item: Char): Unit = items = item.toUpper +: items
+  def scan(item: Char): Unit = {
+    val count = items getOrElse (item, 0)
+    items = items + (item -> (count + 1 ))
+  }
 
   def total(): Double = {
     pricingRules.foldLeft(0d) { (z, r) =>

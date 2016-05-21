@@ -1,11 +1,11 @@
 
 case class PricingRule(item: Char, price: Double, promotion: (Int, Double)) {
 
-  def calculatePrice(items: List[Char]): Double = {
+  def calculatePrice(items: Map[Char, Int]): Double = {
 
     val (itemsInPromotion, promotionalPrice) = promotion
 
-    val numberOfItems = items.count(_ == item)
+    val numberOfItems = items getOrElse (item, 0)
     val promotionalPacks = numberOfItems / itemsInPromotion
     val promotionalPackPrice = promotionalPacks * promotionalPrice
     val regularItems = numberOfItems % itemsInPromotion
